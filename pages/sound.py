@@ -27,14 +27,17 @@ def wav_to_sound(wav, freq):
         sound = np.sin(2 * np.pi * freq * t)
         # sample = np.sin(np.arange(sample_rate) * freq * np.pi * 2 / sample_rate)
     elif wav == '矩形波':
-        sound = sg.square(2 * np.pi * freq * t) 
+        sound = sg.square(2 * np.pi * freq * t)
+        # ゲインの値（例: 6dB増加）
+        # gain_db = -10.0
+
+        # ゲインを適用した音声信号
+        # gain_linear = np.power(10, gain_db / 20)  # dBを線形スケールに変換
+        # sound = sound * gain_linear
+        
     elif wav == 'ノコギリ波':
         sound = sg.sawtooth(2 * np.pi * freq * t)
-        # クリッピングしきい値
-        # threshold = 0.001
 
-        # クリッピングを適用した音声信号
-        # sound = np.clip(sound, -threshold, threshold)
     elif wav == '三角波':
         sound = sg.sawtooth(2 * np.pi * freq * t, width=0.5)   
     else:
