@@ -71,7 +71,7 @@ class speech_pyttsx3:
         self.engine.runAndWait()
 
 
-# # サイドバ
+# # サイドバ-
 # st.sidebar.markdown('### 画像→文字出力')
 # upload_image = st.sidebar.file_uploader(
 #     "ファイルアップローダー", type=['jpg', 'png', 'jpeg'])
