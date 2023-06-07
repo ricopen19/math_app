@@ -1,9 +1,12 @@
 import streamlit as st
 # from PIL import Image, ImageOps
+import numpy as np
 # import cv2
 # import pyocr
 from gtts import gTTS
+# import re
 import pyttsx3
+# import sys
 
 # windowsの場合は必要、Macの場合は不要
 # pyocr.tesseract.TESSERACT_CMD = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
@@ -13,6 +16,7 @@ import pyttsx3
 #     print("No OCR tool found")
 #     sys.exit(1)
 # engine = engines[0]
+col1, col2 = st.columns(2)
 
 
 # def img_crop(img_view):
@@ -44,35 +48,26 @@ import pyttsx3
 #     return text_fixed
 
 
-col1, col2 = st.columns(2)
-
-
-
-def audio_replay():
-    with open('speech.mp3', 'rb') as audio_file:
-        audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format='audio/mp3')
-    audio_file = open("speech.mp3", 'rb')
-    col1.audio(audio_file)
-
 def speech_gTTS(text, lang):
-    gTTS(text=text, lang=lang).save("speech.mp3")
-    audio_replay()
+    gTTS(text=text, lang=lang,fast=True).save("speech.mp3")
+    audio_file = open('speech.mp3', 'rb')
+    col1.audio(audio_file)
+    return audio_file
 
 
-class speech_pyttsx3:
-    def __init__(self):
-        self.engine = pyttsx3.init()
-        self.voices = self.engine.getProperty('voices')
-
-    def convert(self, text, voice_type, speed):
-        # 言語選択
-        self.engine.setProperty("voice", self.voices[voice_type].id)
-        # 発話速度
-        self.engine.setProperty('rate', speed)
-        self.engine.save_to_file(text, "speech.mp3")
-        self.engine.say('text')
-        self.engine.runAndWait()
+def speech_pyttsx3(text, voice_type):
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+    # 言語選択
+    engine.setProperty("voice", voices[voice_type].id)
+    # 発話速度
+    # rate = engine.getProperty('rate')
+    engine.setProperty('rate', talk_speed)
+    engine.save_to_file(text, "speech.aiff")
+    engine.runAndWait()
+    audio_file = open("speech.aiff", 'rb')
+    col1.audio(audio_file)
+    return audio_file
 
 
 # # サイドバー
@@ -84,6 +79,7 @@ class speech_pyttsx3:
 # option_binary = st.sidebar.radio(
 #     '画像を2値化しますか？（文字認識精度が改善するかもしれません）', ('しない', 'する'), horizontal=True)
 # crop_option = st.sidebar.radio('画像をトリミングしますか？', ('しない', 'する'), horizontal=True)
+
 
 # メインページ
 col1.write('読み込んだ画像や変換した音声が表示されます')
@@ -114,21 +110,9 @@ if __name__ == '__main__':
     #         st.code(txt)
 
     if onsei_button:
-        if option_engine == 'pyttsx3':
-            try:
-                pytt_talk = speech_pyttsx3()
-
-                if audio_lang == 'ja':
-                    pytt_talk.convert(
-                        st.session_state.word, voice_type=0, speed=talk_speed)
-                else:
-                    pytt_talk.convert(
-                        st.session_state.word, voice_type=1, speed=talk_speed)
-
-                audio_replay()
-
-            except Exception as e:
-                print(e)
-
+        if option_engine == 'pyttsx3' and audio_lang == 'ja':
+            speech_pyttsx3(st.session_state.word, 0)
+        elif option_engine == 'pyttsx3' and audio_lang == 'en':
+            speech_pyttsx3(st.session_state.word, 1)
         elif option_engine == 'gTTS':
             speech_gTTS(st.session_state.word, audio_lang)
