@@ -51,8 +51,6 @@ def audio_replay():
     with open('speech.mp3', 'rb') as audio_file:
         audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/mp3')
-    audio_file = open("speech.mp3", 'rb')
-    col1.audio(audio_file)
 
 
 def speech_gTTS(text, lang):
