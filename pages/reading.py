@@ -47,13 +47,13 @@ import pyttsx3
 col1, col2 = st.columns(2)
 
 
-
 def audio_replay():
     with open('speech.mp3', 'rb') as audio_file:
         audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/mp3')
     audio_file = open("speech.mp3", 'rb')
     col1.audio(audio_file)
+
 
 def speech_gTTS(text, lang):
     gTTS(text=text, lang=lang).save("speech.mp3")
@@ -71,7 +71,7 @@ class speech_pyttsx3:
         # 発話速度
         self.engine.setProperty('rate', speed)
         self.engine.save_to_file(text, "speech.mp3")
-        self.engine.say('text')
+        self.engine.say(text)
         self.engine.runAndWait()
 
 
