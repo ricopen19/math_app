@@ -82,7 +82,7 @@ class speech_pyttsx3:
 # ocr_lang = st.sidebar.selectbox("OCR化する言語を選んでください", ['jpn', 'eng'])
 # ocr_button = st.sidebar.button('OCR化する')
 # option_binary = st.sidebar.radio(
-#     '画像を2値化しますか？（文字認識精度が改善するかもしれません）', ('しない', 'する'), horizontal=True)
+#     '画像を2値化しますか？（文字認識精度が改善するかも）', ('しない', 'する'), horizontal=True)
 # crop_option = st.sidebar.radio('画像をトリミングしますか？', ('しない', 'する'), horizontal=True)
 
 # メインページ
