@@ -57,7 +57,6 @@ make_link(personal_link, personal_title)
 
 st.markdown('#### 進学について')
 
-st.markdown("<a href='https://www.takeda.tv/kabe/mid-student/post-238854/'>【非受験学年向け】数学の特徴とメリット、デメリット</a>", unsafe_allow_html=True)
 st.markdown("<a href='https://sky-yobiko.net/humanities-math-dispose-of/'>私立文系は数学捨てるべき？私文系数学が必要な理由を知って後悔しない！</a>", unsafe_allow_html=True)
 
 
