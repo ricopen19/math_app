@@ -1,14 +1,8 @@
 from gensim.models.word2vec import Word2Vec
 import streamlit as st
 
-model_path = './model/word2vec.gensim.model'
+model_path = './pages/model/word2vec.gensim.model'
 model = Word2Vec.load(model_path)
-# words = model.wv.most_similar('東京')
-
-# words = model.wv.most_similar(positive=['東京', '自然'], negative=['都会'])
-
-# for word in words:
-#     print(word)
 
 
 st.title('単語計算アプリ')
