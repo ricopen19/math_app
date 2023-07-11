@@ -1,6 +1,6 @@
 import streamlit as st
 
-
+st.title('三角関数の応用例')
 
 f_link = [
     'https://time-space.kddi.com/ict-keywords/kaisetsu/20160427',
