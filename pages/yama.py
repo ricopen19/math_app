@@ -6,7 +6,7 @@ f_link = [
     'https://time-space.kddi.com/ict-keywords/kaisetsu/20160427',
     'https://www.youtube.com/watch?v=3Bvcx_qBLHQ&list=PL42xVavpwPn4cM4SQDiRast9ZH75f5SdB',
     'https://togetter.com/li/1890846',
-    'https://www.nicovideo.jp/watch/sm13283644'
+    'https://www.nicovideo.jp/watch/sm13283644',
     'https://www.nicovideo.jp/watch/sm30542522'
 
           ]
