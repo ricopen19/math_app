@@ -99,15 +99,3 @@ h_title = [
 
 for link, title in zip(h_link, h_title):
     st.markdown(f"<a href={link}>{title}</a>", unsafe_allow_html=True)
-
-st.write('一度本気でやってみる')
-
-
-melit = ['論理的思考力が身につく', '問題解決能力が身につく', '空間認識力が身につく',
-         '発想力（ひらめき力）が身につく', 'データを正しく見抜く力が身につく']
-
-for i, content in enumerate(melit):
-
-    st.markdown(f'{i+1}. {melit[i]}')
-
-
